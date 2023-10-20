@@ -1,22 +1,20 @@
 package com.atm.centroguayas.CONTROLADOR;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.atm.centroguayas.MODELO.CategoriasBD;
-import com.atm.centroguayas.REPOSITORIO.CategoriasRepositorio;
+import com.atm.centroguayas.MODELO.ContenidosBD;
+import com.atm.centroguayas.REPOSITORIO.ContenidosRepositorio;
 
 @RestController
 @RequestMapping("/api/v1/") /// CAMBIAR RUTA SEGUN EL FRONNEND
-public class Categorias {
+public class Contenidos {
 	@Autowired
-	private CategoriasRepositorio repositorio;
-	
-	
-	@RequestMapping("/Categorias")
-	public List<CategoriasBD> listarCategorias() {
+	private ContenidosRepositorio repositorio;
+
+	@RequestMapping("/Contenidos")
+	public List<ContenidosBD> listaContenidos() {
 		return repositorio.findAll();
-	};
+	}
 }

@@ -8,24 +8,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
-public class CategoriasBD {
+@Table(name = "procesos")
+public class ProcesosBD {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codcategoria")
+	@Column(name = "codproceso")
 	private Long id;
+	@Column(name = "codcategoria")
+	private Long codcategoria;
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
 	@Column(name = "url")
 	private String url;
 
-	public CategoriasBD() {
+	public ProcesosBD() {
 
 	}
 
-	public CategoriasBD(Long id, String nombre, String url) {
+	public ProcesosBD(Long id, Long codcategoria, String nombre, String url) {
 		super();
 		this.id = id;
+		this.codcategoria = codcategoria;
 		this.nombre = nombre;
 		this.url = url;
 	}
@@ -36,6 +39,14 @@ public class CategoriasBD {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCodcategoria() {
+		return codcategoria;
+	}
+
+	public void setCodcategoria(Long codcategoria) {
+		this.codcategoria = codcategoria;
 	}
 
 	public String getNombre() {

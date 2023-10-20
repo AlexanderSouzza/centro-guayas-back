@@ -3,10 +3,10 @@ package com.atm.centroguayas.REPOSITORIO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.atm.centroguayas.MODELO.CategoriasBD;
+import com.atm.centroguayas.MODELO.NoticiasBD;
 
 @Repository
 
-public interface CategoriasRepositorio extends JpaRepository<CategoriasBD, Long>{
+public interface NoticiasRepositorio extends JpaRepository<NoticiasBD, Long>{
 
 }

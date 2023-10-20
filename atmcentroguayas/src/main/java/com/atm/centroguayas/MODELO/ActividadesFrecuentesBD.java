@@ -8,25 +8,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
-public class CategoriasBD {
+@Table(name = "actividadesfrecuentes")
+public class ActividadesFrecuentesBD {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "codcategoria")
+	@Column(name = "codactividadfrecuente")
 	private Long id;
-	@Column(name = "nombre", nullable = false)
-	private String nombre;
-	@Column(name = "url")
+	@Column(name = "titulo", nullable = false)
+	private String titulo;
+	@Column(name = "url", nullable = false)
 	private String url;
 
-	public CategoriasBD() {
+	public ActividadesFrecuentesBD() {
 
 	}
 
-	public CategoriasBD(Long id, String nombre, String url) {
+	public ActividadesFrecuentesBD(Long id, String titulo, String url) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.titulo = titulo;
 		this.url = url;
 	}
 
@@ -38,12 +38,12 @@ public class CategoriasBD {
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	public String getUrl() {
