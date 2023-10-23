@@ -1,5 +1,6 @@
-﻿drop table if exists usuarios;
+drop table if exists usuarios;
 drop table if exists tipousuarios;
+drop table if exists transparencias;
 drop table if exists procesos;
 drop table if exists relacioncategorias;
 drop table if exists relacion_categorias;
@@ -9,6 +10,7 @@ drop table if exists actividadesfrecuentes;
 drop table if exists contenidos;
 drop table if exists noticias;
 drop table if exists contactos;
+drop table if exists tipocontactos;
 drop table if exists redessociales;
 -------------------------TIPOS DE USUARIOS------------------------------------
 CREATE TABLE tipousuarios (
@@ -92,22 +94,39 @@ INSERT INTO contenidos(codcontenido, titulo, subtitulo, descripcion, recurso, ur
 CREATE TABLE noticias (
 codnoticia integer primary key,
 titulo varchar(30) not null,
+fecha date not null,
 descripcion text not null,
 recurso varchar(20) not null,
 url varchar (255)
 );
+CREATE TABLE transparencias(
+codtransparencia integer primary key,
+codcategoria integer not null,
+anio smallint CHECK (anio >= 1900 AND anio <= 2100) not null,
+url varchar (255) not null,
+constraint fk_codcategoria FOREIGN KEY (codcategoria) REFERENCES categorias(codcategoria) on update cascade on delete restrict
+);
 
 ---------------------------------------------FOODER----------------------------------------------------------------------
+
 CREATE TABLE contactos (
 codcontacto integer primary key,
 titulo varchar(30) not null,
 descripcion varchar (100) not null
 );
+INSERT INTO contactos(codcontacto, titulo, descripcion)
+	VALUES (1, 'Direccion', 'Calle Eloy Alfaro, entre Tomás Martínez y Malecón Nobol-Ecuador'),
+		   (2, 'Teléfono', '(593) 04-3726440'),
+		   (3, 'Email', 'info@atmcentroguayas.gob.ec');
 CREATE TABLE redessociales (
 codredsocial integer primary key,
 icono varchar(30) not null,
 url text not null
 );
+INSERT INTO redessociales(codredsocial, icono, url)
+	VALUES (1, 'Facebook', 'https://www.facebook.com/ATM-Centro-Guayas-EP-171058496628888/'),
+		   (2, 'Twitter', 'https://twitter.com/ATMCentroGuayas'),
+		   (3, 'Instagram', 'https://www.instagram.com/atmcentroguayasep/');
 ----------------------------INICIAR SESION------------------------------------
 CREATE OR REPLACE FUNCTION iniciarsesion(varchar, varchar) RETURNS integer AS
 $$
